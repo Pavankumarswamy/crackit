@@ -66,6 +66,9 @@ document.addEventListener('DOMContentLoaded', () => {
             // YT.PlayerState.PLAYING = 1, PAUSED = 2
             if (event.data == YT.PlayerState.PLAYING) {
                 playPauseBtn.textContent = '⏸';
+                if (typeof ytPlayer.setPlaybackQuality === 'function') {
+                    ytPlayer.setPlaybackQuality('hd1080');
+                }
             } else if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED) {
                 playPauseBtn.textContent = '▶';
             }
