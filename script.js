@@ -50,49 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Custom Video Controller Logic
-    const video = document.getElementById('heroVideo');
-    const playPauseBtn = document.getElementById('playPauseBtn');
-    const muteBtn = document.getElementById('muteBtn');
-    const progressBar = document.getElementById('progressBar');
-    const progressContainer = document.getElementById('progressContainer');
-
-    if(video) {
-        // Toggle Play/Pause
-        playPauseBtn.addEventListener('click', () => {
-            if (video.paused) {
-                video.play();
-                playPauseBtn.textContent = '⏸';
-            } else {
-                video.pause();
-                playPauseBtn.textContent = '▶';
-            }
-        });
-
-        // Toggle Mute
-        muteBtn.addEventListener('click', () => {
-            video.muted = !video.muted;
-            muteBtn.textContent = video.muted ? '🔇' : '🔊';
-        });
-
-        // Update Progress Bar
-        video.addEventListener('timeupdate', () => {
-            const progress = (video.currentTime / video.duration) * 100;
-            progressBar.style.width = `${progress}%`;
-        });
-
-        // Click on progress bar to seek
-        progressContainer.addEventListener('click', (e) => {
-            const rect = progressContainer.getBoundingClientRect();
-            const pos = (e.clientX - rect.left) / progressContainer.offsetWidth;
-            video.currentTime = pos * video.duration;
-        });
-
-        // End of video resets play button
-        video.addEventListener('ended', () => {
-            playPauseBtn.textContent = '▶';
-        });
-    }
+    // YouTube iframe handles its own controls
 
     // Download Button Interaction
     const downloadBtn = document.getElementById('downloadBtn');
