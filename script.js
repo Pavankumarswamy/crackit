@@ -91,6 +91,31 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    const fullscreenBtn = document.getElementById('fullscreenBtn');
+    const videoWrapper = document.querySelector('.video-wrapper');
+    
+    if (fullscreenBtn && videoWrapper) {
+        fullscreenBtn.addEventListener('click', () => {
+            if (!document.fullscreenElement) {
+                if (videoWrapper.requestFullscreen) {
+                    videoWrapper.requestFullscreen();
+                } else if (videoWrapper.webkitRequestFullscreen) { /* Safari */
+                    videoWrapper.webkitRequestFullscreen();
+                } else if (videoWrapper.msRequestFullscreen) { /* IE11 */
+                    videoWrapper.msRequestFullscreen();
+                }
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) { /* Safari */
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE11 */
+                    document.msExitFullscreen();
+                }
+            }
+        });
+    }
+
     // Download Button Interaction
     const downloadBtn = document.getElementById('downloadBtn');
     if (downloadBtn) {
