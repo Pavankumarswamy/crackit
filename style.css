@@ -239,6 +239,8 @@ h2 {
     left: 0;
     width: 100%;
     height: 100%;
+    pointer-events: none;
+    transform: scale(1.3);
 }
 
 .video-wrapper::after {
@@ -246,6 +248,7 @@ h2 {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
     z-index: 5;
+    background: transparent;
 }
 
 /* Glossy Custom Controls */
