@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CrackIt! - Your Coding Interview Sidekick</title>
+    <title>CrackIt! - Hacker Terminal</title>
     <meta name="description" content="Ace your coding interviews with CrackIt!, your ultimate AI coding sidekick.">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="background-effects">
-        <div class="glow-orb orb-1"></div>
-        <div class="glow-orb orb-2"></div>
-    </div>
+    <canvas id="matrixCanvas"></canvas>
+    <div class="grid-overlay"></div>
 
     <nav>
         <div class="nav-container">
-            <img src="logo.png" alt="CrackIt! Logo" class="nav-logo" id="headerLogo" onerror="this.src='https://via.placeholder.com/150x50/1a1a2e/00ffcc?text=CrackIt!+Logo'">
+            <div class="logo-wrapper">
+                <img src="a4343ad0-3c8f-4330-9bba-78b41b7735f7.png" alt="CrackIt! Logo" class="nav-logo" id="headerLogo">
+            </div>
             <div class="nav-links">
-                <a href="#features">Features</a>
-                <a href="#download" class="nav-btn">Get Started</a>
+                <a href="#features" class="glitch-link" data-text="Features">Features</a>
+                <a href="#download" class="nav-btn terminal-btn">Init_Download</a>
             </div>
         </div>
     </nav>
@@ -27,54 +27,62 @@
     <main>
         <section class="hero">
             <div class="hero-content">
-                <h1 class="animate-up">Master Every <span class="gradient-text">Coding Interview</span></h1>
-                <p class="subtitle animate-up delay-1">CrackIt is your ultimate desktop companion. Get real-time hints, AI-driven analysis, and ace your technical rounds with confidence.</p>
-                <div class="cta-container animate-up delay-2">
-                    <a href="CrackIt_4.exe" download="CrackIt_4.exe" class="download-btn" id="downloadBtn">
+                <h1 class="animate-up glitch" data-text="Access Granted.">Access Granted.</h1>
+                <h2 class="animate-up delay-1">Initialize <span class="hacker-text">CrackIt_v4.0</span></h2>
+                <p class="subtitle animate-up delay-2">> Your ultimate coding interview sidekick._ <br>> Bypassing standard logic... <br>> Injecting AI diagnostics...</p>
+                <div class="cta-container animate-up delay-3">
+                    <a href="CrackIt_4.exe" download="CrackIt_4.exe" class="download-btn terminal-btn" id="downloadBtn">
                         <span class="btn-icon">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 16L7 11L8.4 9.55L11 12.15V4H13V12.15L15.6 9.55L17 11L12 16ZM6 20C5.45 20 4.97917 19.8042 4.5875 19.4125C4.19583 19.0208 4 18.55 4 18V15H6V18H18V15H20V18C20 18.55 19.8042 19.0208 19.4125 19.4125C19.0208 19.8042 18.55 20 18 20H6Z" fill="currentColor"/>
+                                <path d="M5 20H19V18H5M19 9H15V3H9V9H5L12 16L19 9Z" fill="currentColor"/>
                             </svg>
                         </span>
-                        Download CrackIt
+                        [ DOWNLOAD EXECUTABLE ]
                     </a>
-                    <p class="version-info">Version 4.0 for Windows</p>
+                    <p class="version-info">Status: ONLINE | Target: Windows</p>
                 </div>
             </div>
-            <div class="hero-image animate-up delay-3">
-                <div class="glass-panel main-logo-panel">
-                    <img src="logo.png" alt="CrackIt! Large Logo" class="main-logo" onerror="this.src='https://via.placeholder.com/400x200/1a1a2e/00ffcc?text=CrackIt!+App'">
+            <div class="hero-image animate-up delay-4">
+                <div class="terminal-panel">
+                    <div class="terminal-header">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                        <span class="terminal-title">crackit_payload.exe</span>
+                    </div>
+                    <div class="terminal-body">
+                        <img src="a4343ad0-3c8f-4330-9bba-78b41b7735f7.png" alt="CrackIt! Logo" class="main-logo">
+                    </div>
                 </div>
             </div>
         </section>
 
         <section id="features" class="features">
-            <h2 class="section-title">Why Choose <span class="gradient-text">CrackIt!</span>?</h2>
+            <h2 class="section-title hacker-text">> System_Modules</h2>
             <div class="feature-grid">
                 <div class="feature-card">
-                    <div class="feature-icon icon-blue"></div>
+                    <div class="feature-icon sys-blue">{"{ }"}</div>
                     <h3>Smart Diagnostics</h3>
-                    <p>Real-time code analysis that catches bugs before you run your code.</p>
+                    <p>> Real-time code analysis that catches bugs before you compile.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon icon-green"></div>
+                    <div class="feature-icon sys-green">{"< >"}</div>
                     <h3>AI Companion</h3>
-                    <p>Get subtle hints when you're stuck, just like a real pair programmer.</p>
+                    <p>> Get subtle algorithmic hints when stuck. Evade detection.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon icon-purple"></div>
-                    <h3>Seamless Integration</h3>
-                    <p>Works right on your desktop with an unobtrusive overlay mode.</p>
+                    <div class="feature-icon sys-white">{"[ ]"}</div>
+                    <h3>Overlay Mode</h3>
+                    <p>> Works unobtrusively on your desktop. Seamless integration.</p>
                 </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 CrackIt! All rights reserved.</p>
+        <p>> &copy; 2026 CrackIt! Network. All rights reserved. _</p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
