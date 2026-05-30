@@ -18,7 +18,7 @@
                 <img src="a4343ad0-3c8f-4330-9bba-78b41b7735f7.png" alt="CrackIt! Logo" class="nav-logo" id="headerLogo">
             </div>
             <div class="nav-links">
-                <a href="#features" class="glitch-link" data-text="Features">Features</a>
+                <!-- Removed Features link -->
                 <a href="#download" class="nav-btn terminal-btn">Init_Download</a>
             </div>
         </div>
@@ -43,37 +43,15 @@
                 </div>
             </div>
             <div class="hero-image animate-up delay-4">
-                <div class="terminal-panel">
-                    <div class="terminal-header">
-                        <span class="dot red"></span>
-                        <span class="dot yellow"></span>
-                        <span class="dot green"></span>
-                        <span class="terminal-title">crackit_payload.exe</span>
+                <div class="video-wrapper">
+                    <video id="heroVideo" src="process.mp4" playsinline></video>
+                    <div class="custom-video-controls">
+                        <button id="playPauseBtn" class="control-btn">▶</button>
+                        <div class="progress-bar-container" id="progressContainer">
+                            <div id="progressBar" class="progress-bar"></div>
+                        </div>
+                        <button id="muteBtn" class="control-btn">🔊</button>
                     </div>
-                    <div class="terminal-body">
-                        <img src="a4343ad0-3c8f-4330-9bba-78b41b7735f7.png" alt="CrackIt! Logo" class="main-logo">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="features" class="features">
-            <h2 class="section-title hacker-text">> System_Modules</h2>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <div class="feature-icon sys-blue">{"{ }"}</div>
-                    <h3>Smart Diagnostics</h3>
-                    <p>> Real-time code analysis that catches bugs before you compile.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon sys-green">{"< >"}</div>
-                    <h3>AI Companion</h3>
-                    <p>> Get subtle algorithmic hints when stuck. Evade detection.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon sys-white">{"[ ]"}</div>
-                    <h3>Overlay Mode</h3>
-                    <p>> Works unobtrusively on your desktop. Seamless integration.</p>
                 </div>
             </div>
         </section>

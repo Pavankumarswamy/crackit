@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.font = fontSize + 'px "Fira Code", monospace';
 
         for (let i = 0; i < drops.length; i++) {
-            // Random chance for sky blue instead of hacker green
             if (Math.random() > 0.85) {
                 ctx.fillStyle = '#00a8ff'; // Sky blue
             } else {
@@ -51,51 +50,73 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Download Button Interaction
-    const downloadBtn = document.getElementById('downloadBtn');
-    
-    downloadBtn.addEventListener('click', (e) => {
-        const originalText = downloadBtn.innerHTML;
-        downloadBtn.innerHTML = `
-            <span class="btn-icon sys-green">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M9 16.17L4.83 12L3.41 13.41L9 19L21 7L19.59 5.59L9 16.17Z" fill="currentColor"/>
-                </svg>
-            </span>
-            [ EXTRACTING... ]
-        `;
-        
-        // Terminal glitch effect on the body temporarily
-        document.body.style.filter = 'invert(1) hue-rotate(180deg)';
-        setTimeout(() => {
-            document.body.style.filter = 'none';
-        }, 150);
-        setTimeout(() => {
-            document.body.style.filter = 'invert(1) hue-rotate(180deg)';
-        }, 300);
-        setTimeout(() => {
-            document.body.style.filter = 'none';
-        }, 450);
+    // Custom Video Controller Logic
+    const video = document.getElementById('heroVideo');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const muteBtn = document.getElementById('muteBtn');
+    const progressBar = document.getElementById('progressBar');
+    const progressContainer = document.getElementById('progressContainer');
 
-        setTimeout(() => {
-            downloadBtn.innerHTML = originalText;
-        }, 3000);
-    });
-
-    // Scroll Reveal
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+    if(video) {
+        // Toggle Play/Pause
+        playPauseBtn.addEventListener('click', () => {
+            if (video.paused) {
+                video.play();
+                playPauseBtn.textContent = '⏸';
+            } else {
+                video.pause();
+                playPauseBtn.textContent = '▶';
             }
         });
-    }, { threshold: 0.1 });
 
-    document.querySelectorAll('.feature-card').forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = `all 0.4s ease-out ${index * 0.15}s`;
-        observer.observe(card);
-    });
+        // Toggle Mute
+        muteBtn.addEventListener('click', () => {
+            video.muted = !video.muted;
+            muteBtn.textContent = video.muted ? '🔇' : '🔊';
+        });
+
+        // Update Progress Bar
+        video.addEventListener('timeupdate', () => {
+            const progress = (video.currentTime / video.duration) * 100;
+            progressBar.style.width = `${progress}%`;
+        });
+
+        // Click on progress bar to seek
+        progressContainer.addEventListener('click', (e) => {
+            const rect = progressContainer.getBoundingClientRect();
+            const pos = (e.clientX - rect.left) / progressContainer.offsetWidth;
+            video.currentTime = pos * video.duration;
+        });
+
+        // End of video resets play button
+        video.addEventListener('ended', () => {
+            playPauseBtn.textContent = '▶';
+        });
+    }
+
+    // Download Button Interaction
+    const downloadBtn = document.getElementById('downloadBtn');
+    if (downloadBtn) {
+        downloadBtn.addEventListener('click', (e) => {
+            const originalText = downloadBtn.innerHTML;
+            downloadBtn.innerHTML = `
+                <span class="btn-icon sys-green">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 16.17L4.83 12L3.41 13.41L9 19L21 7L19.59 5.59L9 16.17Z" fill="currentColor"/>
+                    </svg>
+                </span>
+                [ EXTRACTING... ]
+            `;
+            
+            // Terminal glitch effect on the body temporarily
+            document.body.style.filter = 'invert(1) hue-rotate(180deg)';
+            setTimeout(() => { document.body.style.filter = 'none'; }, 150);
+            setTimeout(() => { document.body.style.filter = 'invert(1) hue-rotate(180deg)'; }, 300);
+            setTimeout(() => { document.body.style.filter = 'none'; }, 450);
+
+            setTimeout(() => {
+                downloadBtn.innerHTML = originalText;
+            }, 3000);
+        });
+    }
 });
