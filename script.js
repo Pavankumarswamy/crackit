@@ -50,7 +50,46 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // YouTube iframe handles its own controls
+    // YouTube Iframe API Integration
+    let ytPlayer;
+    window.onYouTubeIframeAPIReady = function() {
+        ytPlayer = new YT.Player('heroVideo', {
+            events: {
+                'onStateChange': onPlayerStateChange
+            }
+        });
+    };
+
+    function onPlayerStateChange(event) {
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        if(playPauseBtn) {
+            // YT.PlayerState.PLAYING = 1, PAUSED = 2
+            if (event.data == YT.PlayerState.PLAYING) {
+                playPauseBtn.textContent = '⏸';
+            } else if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED) {
+                playPauseBtn.textContent = '▶';
+            }
+        }
+    }
+
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    if (playPauseBtn) {
+        playPauseBtn.addEventListener('click', () => {
+            if (ytPlayer && typeof ytPlayer.getPlayerState === 'function') {
+                const state = ytPlayer.getPlayerState();
+                if (state == YT.PlayerState.PLAYING) {
+                    ytPlayer.pauseVideo();
+                } else {
+                    ytPlayer.playVideo();
+                }
+            }
+        });
+    }
 
     // Download Button Interaction
     const downloadBtn = document.getElementById('downloadBtn');
